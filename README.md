@@ -6,7 +6,7 @@ To run the code in this repository, you need [Node.js](https://nodejs.org/en/dow
 
 You also need [express](https://www.npmjs.com/package/express), [pug](https://www.npmjs.com/package/pug), and [axios](https://www.npmjs.com/package/axios).
 Install those libraries with `npm install express pug axios`.
-If everything is set up, you can run the app with `node app.js`.
+If everything is set up, you can run the app with `node app.js` and then access it at `http://localhost:5000`.
 
 ## Dependencies
 Here, we use express as a web framework, pug as a template engine, and axios to make get and post requests.
