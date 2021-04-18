@@ -25,11 +25,6 @@ const client_secret = undefined
 // url parameters. we assume that, if a user is logged in, an OAuth access token
 // is passed to this function in the url.
 //
-// ToDo:
-//  - if we don't get an access token, display a "login with github" button
-//  - if we have an access token, use if to fetch the user info. use it to display
-//    a greeting that includes the user's name, and a logout button
-//
 // there are certainly many ways to do it, but here, let's use a template that
 // contains code for both cases. depending on a (possible undefined) user's name
 // that we pass into the template, we decide what to display.
@@ -37,31 +32,30 @@ app.get("/", (req, res) => {
   access_token = req.query.access_token
   username     = undefined
 
-  // ToDo: add code for getting the username here...
+  // ToDo: add code for getting the user's name here...
+  //  - if we don't get an access token, display a "login with github" button
+  //  - if we have an access token, use if to fetch the user info. use it to display
+  //    a greeting that includes the user's name, and a logout button
 
   res.render("index", { username: username })
 })
 
 
 // the auth route.
-//
-// ToDo: redirect the user to github's authorisation url (we could do this also
-//       directly with the login button)
 app.get("/auth", (req, res) => {
+  // ToDo: redirect the user to github's authorisation url (we could do this also
+  //       directly with the login button)
   res.redirect(undefined)
 })
 
 
-// the callback url where github redirects the user. we receive a code that we
-// can use to get an access token for the user's account data.
-//
-// ToDo:
-//  - use the code to get an access token
-//  - redirect the user to the start page and pass the access token as a url parameter
+// the callback url where github redirects the user. we receive a temporary code
+//  that we can use to get an access token for the user's account data.
 app.get("/auth/callback", (req, res) => {
   code = req.query.code
 
-  // ToDo: add code for getting the access token here...
+  // ToDo: use the temporary code we got to get an access token from GitHub
+  access_token = undefined
 
   res.redirect(`/?access_token=${accessToken}`)
 })
